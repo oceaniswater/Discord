@@ -11,6 +11,11 @@
 		86B0A6E72B29EF8B00A2D581 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6E62B29EF8B00A2D581 /* ContentView.swift */; };
 		86B0A6E92B29EF8C00A2D581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A6E82B29EF8C00A2D581 /* Assets.xcassets */; };
 		86B0A6EC2B29EF8C00A2D581 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A6EB2B29EF8C00A2D581 /* Preview Assets.xcassets */; };
+		86B0A6F32B29F0DB00A2D581 /* DiscordTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6F22B29F0DB00A2D581 /* DiscordTabView.swift */; };
+		86B0A6F82B29F1D000A2D581 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6F72B29F1D000A2D581 /* HomeView.swift */; };
+		86B0A6FA2B29F35B00A2D581 /* UserSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6F92B29F35B00A2D581 /* UserSearchView.swift */; };
+		86B0A6FC2B29F36800A2D581 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6FB2B29F36800A2D581 /* ProfileView.swift */; };
+		86B0A6FE2B29F67900A2D581 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6FD2B29F67900A2D581 /* ChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		86B0A6E62B29EF8B00A2D581 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		86B0A6E82B29EF8C00A2D581 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86B0A6EB2B29EF8C00A2D581 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		86B0A6F22B29F0DB00A2D581 /* DiscordTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordTabView.swift; sourceTree = "<group>"; };
+		86B0A6F72B29F1D000A2D581 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		86B0A6F92B29F35B00A2D581 /* UserSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchView.swift; sourceTree = "<group>"; };
+		86B0A6FB2B29F36800A2D581 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		86B0A6FD2B29F67900A2D581 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +61,14 @@
 		86B0A6E32B29EF8B00A2D581 /* Discord */ = {
 			isa = PBXGroup;
 			children = (
+				86B0A6F62B29F1AD00A2D581 /* Profile */,
+				86B0A6F52B29F1A600A2D581 /* Search */,
+				86B0A6F42B29F1A000A2D581 /* Home */,
 				86B0A6E42B29EF8B00A2D581 /* DiscordApp.swift */,
 				86B0A6E62B29EF8B00A2D581 /* ContentView.swift */,
 				86B0A6E82B29EF8C00A2D581 /* Assets.xcassets */,
 				86B0A6EA2B29EF8C00A2D581 /* Preview Content */,
+				86B0A6F22B29F0DB00A2D581 /* DiscordTabView.swift */,
 			);
 			path = Discord;
 			sourceTree = "<group>";
@@ -65,6 +79,31 @@
 				86B0A6EB2B29EF8C00A2D581 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		86B0A6F42B29F1A000A2D581 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A6F72B29F1D000A2D581 /* HomeView.swift */,
+				86B0A6FD2B29F67900A2D581 /* ChatView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		86B0A6F52B29F1A600A2D581 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A6F92B29F35B00A2D581 /* UserSearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		86B0A6F62B29F1AD00A2D581 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				86B0A6FB2B29F36800A2D581 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +176,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B0A6F32B29F0DB00A2D581 /* DiscordTabView.swift in Sources */,
+				86B0A6F82B29F1D000A2D581 /* HomeView.swift in Sources */,
 				86B0A6E72B29EF8B00A2D581 /* ContentView.swift in Sources */,
+				86B0A6FA2B29F35B00A2D581 /* UserSearchView.swift in Sources */,
+				86B0A6FE2B29F67900A2D581 /* ChatView.swift in Sources */,
+				86B0A6FC2B29F36800A2D581 /* ProfileView.swift in Sources */,
 				86B0A6E52B29EF8B00A2D581 /* DiscordApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
