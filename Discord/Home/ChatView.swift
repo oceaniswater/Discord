@@ -30,34 +30,38 @@ struct ChatView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(!showSideMenu ? .white : .gray)
+
                 })
                 
                 Image(systemName: "number")
+                    .foregroundStyle(!showSideMenu ? .white : .gray)
                 
                 Text("general")
                     .bold()
                     .font(.callout)
+                    .foregroundStyle(!showSideMenu ? .white : .gray)
                 
                 Spacer()
                 
                 Image(systemName: "person.2.fill")
+                    .foregroundStyle(!showSideMenu ? .white : .gray)
             }
             .padding()
-            .padding(.top, 42)
-            .background {
-                Color(uiColor: .systemGray6)
-            }
+            .padding(.top, !showSideMenu ? 42 : 0)
+
+            Divider()
             
-            ChatRoomView()
+            ChatRoomView(showSideMenu: $showSideMenu)
                 .padding(.bottom)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .preferredColorScheme(.dark)
         .background {
-            Color(.background)
+            UnevenRoundedRectangle(cornerRadii: .init(topLeading: showSideMenu ? 10 : 0, topTrailing: 0))
+                    .fill(Color.background)
         }
-        .ignoresSafeArea()
+        .edgesIgnoringSafeArea(!showSideMenu ? .all : [])
         
     }
 }

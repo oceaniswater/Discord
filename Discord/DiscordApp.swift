@@ -11,7 +11,7 @@ import SwiftUI
 struct DiscordApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DiscordTabView()
         }
     }
 }

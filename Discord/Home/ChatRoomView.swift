@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChatRoomView: View {
+    @Binding var showSideMenu: Bool
     @State var message: String = ""
     var mockMessages: [Message] = [
         Message(id: 1, createdAt:  .distantPast,userName: "Mark Golubev", imageURL: "mark", text: "Hi everyone!"),
@@ -20,6 +21,7 @@ struct ChatRoomView: View {
                     VStack(alignment: .leading) {
                         Image(systemName: "number")
                             .imageScale(.large)
+                            .foregroundStyle(!showSideMenu ? .white : .gray)
                             .padding()
                             .background {
                                 Circle()
@@ -30,6 +32,7 @@ struct ChatRoomView: View {
                         
                         Text("Welcome to general")
                             .font(.title2)
+                            .foregroundStyle(!showSideMenu ? .white : .gray)
                             .bold()
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -39,21 +42,30 @@ struct ChatRoomView: View {
                 LazyVStack(content: {
                     ForEach(mockMessages) { message in
                         HStack(alignment: .top) {
-                            Image(message.imageURL)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 48, height: 48)
-                                .clipShape(Circle())
+                            ZStack {
+                                Image(message.imageURL)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 48, height: 48)
+                                    .clipShape(Circle())
+                                Circle()
+                                    .fill(Color.gray
+                                        .opacity(showSideMenu ? 0.7 : 0))
+                                    .frame(width: 48, height: 48)
+                            }
                             
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text(message.userName)
                                         .bold()
+                                        .foregroundStyle(!showSideMenu ? .white : .gray)
                                     Text(message.createdAt.formatted())
                                         .font(.caption)
+                                        .foregroundStyle(!showSideMenu ? .white : .gray)
                                     
                                 }
                                 Text(message.text)
+                                    .foregroundStyle(!showSideMenu ? .white : .gray)
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -63,9 +75,6 @@ struct ChatRoomView: View {
             }
             
             Divider()
-                .overlay {
-                    Color.black
-                }
             
             HStack {
                 TextField("Message #general", text: $message)
@@ -93,9 +102,10 @@ struct ChatRoomView: View {
             .padding(.horizontal, 8)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .preferredColorScheme(.dark)
     }
 }
 
 #Preview {
-    ChatRoomView()
+    ChatRoomView(showSideMenu: .constant(true))
 }
