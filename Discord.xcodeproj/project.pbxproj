@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86A0D6B42B2B533A00915B2E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0D6B32B2B533A00915B2E /* MenuView.swift */; };
+		86A0D6B62B2B58E400915B2E /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */; };
 		86B0A6E52B29EF8B00A2D581 /* DiscordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6E42B29EF8B00A2D581 /* DiscordApp.swift */; };
 		86B0A6E72B29EF8B00A2D581 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6E62B29EF8B00A2D581 /* ContentView.swift */; };
 		86B0A6E92B29EF8C00A2D581 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B0A6E82B29EF8C00A2D581 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86A0D6B32B2B533A00915B2E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 		86B0A6E12B29EF8B00A2D581 /* Discord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Discord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B0A6E42B29EF8B00A2D581 /* DiscordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordApp.swift; sourceTree = "<group>"; };
 		86B0A6E62B29EF8B00A2D581 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 			children = (
 				86B0A6F72B29F1D000A2D581 /* HomeView.swift */,
 				86B0A6FD2B29F67900A2D581 /* ChatView.swift */,
+				86A0D6B32B2B533A00915B2E /* MenuView.swift */,
+				86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				86B0A6F32B29F0DB00A2D581 /* DiscordTabView.swift in Sources */,
+				86A0D6B42B2B533A00915B2E /* MenuView.swift in Sources */,
+				86A0D6B62B2B58E400915B2E /* ChatRoomView.swift in Sources */,
 				86B0A6F82B29F1D000A2D581 /* HomeView.swift in Sources */,
 				86B0A6E72B29EF8B00A2D581 /* ContentView.swift in Sources */,
 				86B0A6FA2B29F35B00A2D581 /* UserSearchView.swift in Sources */,
