@@ -12,6 +12,8 @@ struct DiscordApp: App {
     var body: some Scene {
         WindowGroup {
             DiscordTabView()
+                .tint(Color.white)
+
         }
     }
 }
