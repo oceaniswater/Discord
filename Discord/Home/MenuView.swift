@@ -174,8 +174,30 @@ struct MenuView: View {
                                     .padding(.vertical, 5)
                                     .padding(.horizontal)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(selectedChanel == chanel ? Color(uiColor: .systemGray3) : .clear)
+                                            .padding(.horizontal, 7)
+                                    }
 
                                 }
+                            }
+                        } 
+                        else if let selectedChanel, !showTextChanels, selectedChanel.type == .text {
+                            HStack {
+                                Image(systemName: "number")
+                                    .foregroundStyle(Color.gray)
+                                Text(selectedChanel.name)
+                                    .foregroundStyle(Color.white)
+                                    .font(.title3)
+                            }
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color(uiColor: .systemGray3))
+                                    .padding(.horizontal, 7)
                             }
                         }
                         
@@ -217,8 +239,30 @@ struct MenuView: View {
                                     .padding(.vertical, 5)
                                     .padding(.horizontal)
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(selectedChanel == chanel ? Color(uiColor: .systemGray3) : .clear)
+                                            .padding(.horizontal, 7)
+                                    }
 
                                 }
+                            }
+                        }
+                        else if let selectedChanel, !showVoiceChanels, selectedChanel.type == .voice {
+                            HStack {
+                                Image(systemName: "number")
+                                    .foregroundStyle(Color.gray)
+                                Text(selectedChanel.name)
+                                    .foregroundStyle(Color.white)
+                                    .font(.title3)
+                            }
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color(uiColor: .systemGray3))
+                                    .padding(.horizontal, 7)
                             }
                         }
                     }
