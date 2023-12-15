@@ -13,7 +13,7 @@ struct Server: Identifiable {
     let name: String
 }
 
-struct Chanel: Identifiable {
+struct Chanel: Identifiable, Equatable {
     var id: Int?
     let createdAt: Date
     let name: String
@@ -167,7 +167,7 @@ struct MenuView: View {
                                             Image(systemName: "number")
                                                 .foregroundStyle(Color.gray)
                                             Text(chanel.name)
-                                                .foregroundStyle(selectedChanel?.id == chanel.id ? Color.white : Color.gray)
+                                                .foregroundStyle(selectedChanel == chanel ? Color.white : Color.gray)
                                                 .font(.title3)
                                         }
                                     }
@@ -210,7 +210,7 @@ struct MenuView: View {
                                             Image(systemName: "number")
                                                 .foregroundStyle(Color.gray)
                                             Text(chanel.name)
-                                                .foregroundStyle(selectedChanel?.id == chanel.id ? Color.white : Color.gray)
+                                                .foregroundStyle(selectedChanel == chanel ? Color.white : Color.gray)
                                                 .font(.title3)
                                         }
                                     }
