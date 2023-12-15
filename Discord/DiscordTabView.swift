@@ -9,9 +9,6 @@ import SwiftUI
 
 struct DiscordTabView: View {
     @State var selectedTab = 0
-//    init() {
-//        UITabBar.appearance().backgroundColor = UIColor.background
-//        UITabBar.appearance().selectedItem?.badgeColor = UIColor.white  }
     
     var body: some View {
         
@@ -20,19 +17,29 @@ struct DiscordTabView: View {
                     .tag(0)
                     .tabItem {
                         Image(systemName: "house")
+                        Text("Servers")
                     }
                     .badge(1)
                 
-                UserSearchView()
+                MessagesView()
                     .tag(1)
                     .tabItem {
-                        Image(systemName: "magnifyingglass")
+                        Image(systemName: "message.fill")
+                        Text("Messages")
+                    }
+                
+                NotificationsView()
+                    .tag(2)
+                    .tabItem {
+                        Image(systemName: "bell.fill")
+                        Text("Notifications")
                     }
                 
                 ProfileView()
-                    .tag(2)
+                    .tag(3)
                     .tabItem {
                         Image(systemName: "person")
+                        Text("You")
                     }
             }
             .tabViewStyle(backgroundColor: .background,

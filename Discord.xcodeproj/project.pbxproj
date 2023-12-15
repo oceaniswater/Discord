@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		862FECA72B2CB33500255395 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862FECA62B2CB33500255395 /* MessagesView.swift */; };
+		862FECA92B2CB35600255395 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862FECA82B2CB35600255395 /* NotificationsView.swift */; };
 		86A0D6B42B2B533A00915B2E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0D6B32B2B533A00915B2E /* MenuView.swift */; };
 		86A0D6B62B2B58E400915B2E /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */; };
 		86B0A6E52B29EF8B00A2D581 /* DiscordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6E42B29EF8B00A2D581 /* DiscordApp.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		862FECA62B2CB33500255395 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		862FECA82B2CB35600255395 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		86A0D6B32B2B533A00915B2E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 		86B0A6E12B29EF8B00A2D581 /* Discord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Discord.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +50,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		862FECA42B2CB2F000255395 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				862FECA82B2CB35600255395 /* NotificationsView.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		862FECA52B2CB2FC00255395 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				862FECA62B2CB33500255395 /* MessagesView.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		86B0A6D82B29EF8B00A2D581 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +85,8 @@
 		86B0A6E32B29EF8B00A2D581 /* Discord */ = {
 			isa = PBXGroup;
 			children = (
+				862FECA52B2CB2FC00255395 /* Messages */,
+				862FECA42B2CB2F000255395 /* Notifications */,
 				86B0A6F62B29F1AD00A2D581 /* Profile */,
 				86B0A6F52B29F1A600A2D581 /* Search */,
 				86B0A6F42B29F1A000A2D581 /* Home */,
@@ -182,8 +204,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				862FECA72B2CB33500255395 /* MessagesView.swift in Sources */,
 				86B0A6F32B29F0DB00A2D581 /* DiscordTabView.swift in Sources */,
 				86A0D6B42B2B533A00915B2E /* MenuView.swift in Sources */,
+				862FECA92B2CB35600255395 /* NotificationsView.swift in Sources */,
 				86A0D6B62B2B58E400915B2E /* ChatRoomView.swift in Sources */,
 				86B0A6F82B29F1D000A2D581 /* HomeView.swift in Sources */,
 				86B0A6E72B29EF8B00A2D581 /* ContentView.swift in Sources */,

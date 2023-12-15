@@ -15,7 +15,7 @@ struct HomeView: View {
         GeometryReader { geometry in
             ZStack {
                 // Menu View
-                MenuView()
+                MenuView(showSideMenu: $showSideMenu)
                 // Chat View
                 ChatView(showSideMenu: $showSideMenu)
                     .offset(x: showSideMenu ? geometry.size.width * 0.86 : 0)

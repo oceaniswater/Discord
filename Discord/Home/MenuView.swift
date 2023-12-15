@@ -29,7 +29,7 @@ struct MenuView: View {
     @State var selectedChanel: Chanel?
     @State var showTextChanels = true
     @State var showVoiceChanels = true
-
+    @Binding var showSideMenu: Bool
     
     var mockServers: [Server] = [
         Server(id: 1, createdAt: .now, name: "Swift"),
@@ -92,8 +92,14 @@ struct MenuView: View {
                         Text("Swift")
                             .bold()
                         Spacer()
-                        Image(systemName: "ellipsis")
-                            .fontWeight(.heavy)
+                        Button {
+                            dump(selectedChanel)
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .fontWeight(.heavy)
+                                .foregroundStyle(Color.white)
+                        }
+
                         
                     }
                     .padding()
@@ -161,6 +167,7 @@ struct MenuView: View {
                                     Button {
                                         withAnimation {
                                             selectedChanel = chanel
+                                            showSideMenu = false
                                         }
                                     } label: {
                                         HStack {
@@ -281,5 +288,5 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView()
+    MenuView(showSideMenu: .constant(false))
 }
