@@ -11,9 +11,10 @@ struct Server: Identifiable {
     var id: Int?
     let createdAt: Date
     let name: String
+    var channels: [Channel]
 }
 
-struct Chanel: Identifiable, Equatable {
+struct Channel: Identifiable, Equatable {
     var id: Int?
     let createdAt: Date
     let name: String
@@ -26,24 +27,35 @@ enum ChanelType {
 }
 
 struct MenuView: View {
-    @State var selectedChanel: Chanel?
+    @Binding var selectedChanel: Channel?
+    @State var selectedServer: Server?
     @State var showTextChanels = true
     @State var showVoiceChanels = true
     @Binding var showSideMenu: Bool
     
     var mockServers: [Server] = [
-        Server(id: 1, createdAt: .now, name: "Swift"),
-        Server(id: 2, createdAt: .now, name: "Python"),
-        Server(id: 3, createdAt: .now, name: "Kotlin"),
-        Server(id: 4, createdAt: .now, name: "C++"),
-        Server(id: 5, createdAt: .now, name: "Go")
-    ]
-    
-    var mockChanel: [Chanel] = [
-        Chanel(id: 1, createdAt: .now, name: "general", type: .text),
-        Chanel(id: 2, createdAt: .now, name: "ux/ui", type: .text),
-        Chanel(id: 3, createdAt: .now, name: "vision pro", type: .text),
-        Chanel(id: 4, createdAt: .now, name: "wwdc talks", type: .voice)
+        Server(id: 1, createdAt: .now, name: "Swift", channels: [
+            Channel(id: 1, createdAt: .now, name: "general", type: .text),
+            Channel(id: 2, createdAt: .now, name: "ux/ui", type: .text),
+            Channel(id: 3, createdAt: .now, name: "vision pro", type: .text),
+            Channel(id: 4, createdAt: .now, name: "wwdc talks", type: .voice)
+        ]),
+        Server(id: 2, createdAt: .now, name: "Python", channels: [
+            Channel(id: 1, createdAt: .now, name: "general", type: .text),
+            Channel(id: 4, createdAt: .now, name: "general", type: .voice)
+        ]),
+        Server(id: 3, createdAt: .now, name: "Kotlin", channels: [
+            Channel(id: 1, createdAt: .now, name: "general", type: .text),
+            Channel(id: 4, createdAt: .now, name: "general", type: .voice)
+        ]),
+        Server(id: 4, createdAt: .now, name: "C++", channels: [
+            Channel(id: 1, createdAt: .now, name: "general", type: .text),
+            Channel(id: 4, createdAt: .now, name: "general", type: .voice)
+        ]),
+        Server(id: 5, createdAt: .now, name: "Go", channels: [
+            Channel(id: 1, createdAt: .now, name: "general", type: .text),
+            Channel(id: 4, createdAt: .now, name: "general", type: .voice)
+        ])
     ]
     
     var body: some View {
@@ -52,14 +64,27 @@ struct MenuView: View {
             ScrollView {
                 VStack(spacing: 12) {
                     ForEach(mockServers) { server in
-                        Text(server.name.prefix(1))
-                            .font(.title)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
-                            .background {
-                                Circle()
-                                    .fill(Color.background)
+                        Button(action: {
+                            withAnimation {
+                                selectedServer = server
                             }
+                        }, label: {
+                            HStack {
+                                UnevenRoundedRectangle(cornerRadii: .init(bottomTrailing: 20, topTrailing: 20))
+                                    .fill(Color.white)
+                                    .frame(width: 4)
+                                    .opacity(selectedServer?.id == server.id ? 1 : 0)
+                                Text(server.name.prefix(1))
+                                    .foregroundStyle(Color.white)
+                                    .font(.title)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 8)
+                                    .background {
+                                        Circle()
+                                            .fill(Color.background)
+                                    }
+                            }
+                        })
                     }
                 }
                 .frame(width: 60)
@@ -69,16 +94,22 @@ struct MenuView: View {
                 Button {
                     //
                 } label: {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20)
-                        .foregroundStyle(.green)
-                        .background {
-                            Circle()
-                                .fill(Color.background)
-                                .padding(-14)
+                    HStack {
+                        UnevenRoundedRectangle(cornerRadii: .init(bottomTrailing: 20, topTrailing: 20))
+                            .fill(Color.white)
+                            .frame(width: 4)
+                            .opacity(0)
+                        Image(systemName: "plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .foregroundStyle(.green)
+                            .background {
+                                Circle()
+                                    .fill(Color.background)
+                                    .padding(-14)
                         }
+                    }
                     
                 }
                 .padding(.vertical, 12)
@@ -89,7 +120,7 @@ struct MenuView: View {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        Text("Swift")
+                        Text(selectedServer?.name ?? "default")
                             .bold()
                         Spacer()
                         Button {
@@ -162,7 +193,7 @@ struct MenuView: View {
 
                         
                         if showTextChanels {
-                            ForEach(mockChanel) { chanel in
+                            ForEach(selectedServer?.channels ?? []) { chanel in
                                 if chanel.type == .text {
                                     Button {
                                         withAnimation {
@@ -228,7 +259,7 @@ struct MenuView: View {
 
                         
                         if showVoiceChanels {
-                            ForEach(mockChanel) { chanel in
+                            ForEach(selectedServer?.channels ?? []) { chanel in
                                 if chanel.type == .voice {
                                     Button {
                                         withAnimation {
@@ -284,9 +315,15 @@ struct MenuView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .preferredColorScheme(.dark)
+        .onAppear {
+            withAnimation {
+                selectedServer = mockServers.first
+                selectedChanel = selectedServer?.channels.first
+            }
+        }
     }
 }
 
 #Preview {
-    MenuView(showSideMenu: .constant(false))
+    MenuView(selectedChanel: .constant(nil), showSideMenu: .constant(false))
 }

@@ -16,6 +16,7 @@ struct Message: Identifiable {
 }
 
 struct ChatView: View {
+    @Binding var selectedChannel: Channel?
     @Binding var showSideMenu: Bool
     
     var body: some View {
@@ -37,7 +38,7 @@ struct ChatView: View {
                 Image(systemName: "number")
                     .foregroundStyle(!showSideMenu ? .white : .gray)
                 
-                Text("general")
+                Text(selectedChannel?.name ?? "default")
                     .bold()
                     .font(.callout)
                     .foregroundStyle(!showSideMenu ? .white : .gray)
@@ -67,5 +68,5 @@ struct ChatView: View {
 }
 
 #Preview {
-    ChatView(showSideMenu: .constant(false))
+    ChatView(selectedChannel: .constant(Channel(id: 99, createdAt: .now, name: "general", type: .text)), showSideMenu: .constant(false))
 }
