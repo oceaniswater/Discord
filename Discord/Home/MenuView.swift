@@ -174,7 +174,7 @@ struct MenuView: View {
                                             Image(systemName: "number")
                                                 .foregroundStyle(Color.gray)
                                             Text(chanel.name)
-                                                .foregroundStyle(selectedChanel == chanel ? Color.white : Color.gray)
+                                                .foregroundStyle(selectedChanel?.id == chanel.id ? Color.white : Color.gray)
                                                 .font(.title3)
                                         }
                                     }
@@ -183,7 +183,7 @@ struct MenuView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .background {
                                         RoundedRectangle(cornerRadius: 10)
-                                            .fill(selectedChanel == chanel ? Color(uiColor: .systemGray3) : .clear)
+                                            .fill(selectedChanel?.id == chanel.id ? Color(uiColor: .systemGray3) : .clear)
                                             .padding(.horizontal, 7)
                                     }
 
@@ -239,7 +239,7 @@ struct MenuView: View {
                                             Image(systemName: "number")
                                                 .foregroundStyle(Color.gray)
                                             Text(chanel.name)
-                                                .foregroundStyle(selectedChanel == chanel ? Color.white : Color.gray)
+                                                .foregroundStyle(selectedChanel?.id == chanel.id ? Color.white : Color.gray)
                                                 .font(.title3)
                                         }
                                     }
@@ -248,7 +248,7 @@ struct MenuView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .background {
                                         RoundedRectangle(cornerRadius: 10)
-                                            .fill(selectedChanel == chanel ? Color(uiColor: .systemGray3) : .clear)
+                                            .fill(selectedChanel?.id == chanel.id ? Color(uiColor: .systemGray3) : .clear)
                                             .padding(.horizontal, 7)
                                     }
 
