@@ -28,7 +28,7 @@ struct ChatRoomView: View {
                         
                             .padding(.bottom, 24)
                         
-                        Text("Welcome to general")
+                        Text("Welcome to \(selectedChannel?.name ?? "default")")
                             .font(.title2)
                             .foregroundStyle(!showSideMenu ? .white : .gray)
                             .bold()
