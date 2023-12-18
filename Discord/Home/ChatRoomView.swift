@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct ChatRoomView: View {
+    @Binding var selectedChannel: Channel?
     @Binding var showSideMenu: Bool
     @State var message: String = ""
-    var mockMessages: [Message] = [
-        Message(id: 1, createdAt:  .distantPast,userName: "Mark Golubev", imageURL: "mark", text: "Hi everyone!"),
-        Message(id: 2, createdAt:  .now, userName: "Mark Golubev", imageURL: "mark", text: "How is it going?")
-    ]
+
     var body: some View {
         VStack {
             ScrollView {
@@ -40,7 +38,7 @@ struct ChatRoomView: View {
                 }
                 
                 LazyVStack(content: {
-                    ForEach(mockMessages) { message in
+                    ForEach(selectedChannel?.messages ?? []) { message in
                         HStack(alignment: .top) {
                             ZStack {
                                 Image(message.imageURL)
@@ -107,5 +105,5 @@ struct ChatRoomView: View {
 }
 
 #Preview {
-    ChatRoomView(showSideMenu: .constant(true))
+    ChatRoomView(selectedChannel: .constant(Channel(id: 1, createdAt: .now, name: "general", type: .text, messages: [Message(id: 1, createdAt: .distantPast, userName: "mark golubev", imageURL: "mark", text: "Hi, everyone!  How is it going?"), Message(id: 2, createdAt: .now, userName: "tim cook", imageURL: "tim", text: "Hi, Mark! Good to see you! Did you see last release notes?")])), showSideMenu: .constant(false))
 }

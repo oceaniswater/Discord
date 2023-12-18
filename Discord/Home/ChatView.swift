@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Message: Identifiable {
+struct Message: Identifiable, Equatable {
     var id: Int?
     let createdAt: Date
     let userName: String
@@ -53,7 +53,7 @@ struct ChatView: View {
 
             Divider()
             
-            ChatRoomView(showSideMenu: $showSideMenu)
+            ChatRoomView(selectedChannel: $selectedChannel, showSideMenu: $showSideMenu)
                 .padding(.bottom)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

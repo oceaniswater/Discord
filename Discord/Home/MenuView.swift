@@ -19,6 +19,7 @@ struct Channel: Identifiable, Equatable {
     let createdAt: Date
     let name: String
     let type: ChanelType
+    var messages: [Message]?
 }
 
 enum ChanelType {
@@ -31,12 +32,13 @@ struct MenuView: View {
     @State var selectedServer: Server?
     @State var showTextChanels = true
     @State var showVoiceChanels = true
+    @State var showJoinVoiceChannelBottomSheet = false
     @Binding var showSideMenu: Bool
     
     var mockServers: [Server] = [
         Server(id: 1, createdAt: .now, name: "Swift", channels: [
-            Channel(id: 1, createdAt: .now, name: "general", type: .text),
-            Channel(id: 2, createdAt: .now, name: "ux/ui", type: .text),
+            Channel(id: 1, createdAt: .now, name: "general", type: .text, messages: [Message(id: 1, createdAt: .distantPast, userName: "mark golubev", imageURL: "mark", text: "Hi, everyone!  How is it going?"), Message(id: 2, createdAt: .now, userName: "tim cook", imageURL: "tim", text: "Hi, Mark! Good to see you! Did you see last release notes?")]),
+            Channel(id: 2, createdAt: .now, name: "ux/ui", type: .text, messages: [Message(id: 1, createdAt: .distantPast, userName: "mark golubev", imageURL: "mark", text: "Hi, everyone!  Can you provide last designs for sucsess payment alert?")]),
             Channel(id: 3, createdAt: .now, name: "vision pro", type: .text),
             Channel(id: 4, createdAt: .now, name: "wwdc talks", type: .voice)
         ]),
@@ -264,6 +266,11 @@ struct MenuView: View {
                                     Button {
                                         withAnimation {
                                             selectedChanel = chanel
+                                            // TODO: - call bottom sheet here
+                                            withAnimation {
+                                                showJoinVoiceChannelBottomSheet = true
+                                            }
+                                            
                                         }
                                     } label: {
                                         HStack {
@@ -314,6 +321,121 @@ struct MenuView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .sheet(isPresented: $showJoinVoiceChannelBottomSheet, onDismiss: {
+            withAnimation {
+                showJoinVoiceChannelBottomSheet = false
+            }
+        }, content: {
+            VStack(content: {
+                HStack {
+                    Button {
+                        withAnimation {
+                            showJoinVoiceChannelBottomSheet = false
+                        }
+                    } label: {
+                        Image(systemName: "chevron.down")
+                            .imageScale(.medium)
+                            .foregroundStyle(Color.white)
+                            .padding(10)
+                            .background {
+                                Circle()
+                                    .fill(Color(uiColor: .systemGray3))
+                            }
+                    }
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            //
+                        }
+                    } label: {
+                        Image(systemName: "person.fill.badge.plus")
+                            .imageScale(.small)
+                            .foregroundStyle(Color.white)
+                            .padding(10)
+                            .background {
+                                Circle()
+                                    .fill(Color(uiColor: .systemGray3))
+                            }
+                    }
+                    
+                }
+                .padding()
+                Text("💬")
+                    .foregroundStyle(Color.white)
+                    .font(.title)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                    .background {
+                        Circle()
+                            .fill(                            
+                                LinearGradient(
+                                gradient: Gradient(colors: [.purple, .yellow, .blue]),
+                                startPoint: .leading,
+                                endPoint: .trailing)
+                            )
+                            .frame(width: 70, height:  700)
+                    }
+                Text(selectedChanel?.name ?? "default")
+                    .bold()
+                    .font(.title2)
+                    .padding(.top)
+                Text("No one's here yet!\nWhen you are ready to talk, just hope in.")
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .padding()
+                HStack {
+                    Image(systemName: "mic.slash.fill")
+                        .imageScale(.large)
+                        .foregroundStyle(Color.white)
+                        .padding(10)
+                        .background {
+                            Circle()
+                                .fill(Color(uiColor: .systemGray3))
+                        }
+                    
+                    Spacer()
+                    
+                    Button {
+                        //
+                    } label: {
+                        Text("Join Voice")
+                            .foregroundStyle(Color.white)
+                            .padding(.horizontal,50)
+                            .background {
+                                RoundedRectangle(cornerRadius: 30)
+                                    .fill(Color.green)
+                                    .frame(height: 45)
+                                    .padding()
+                            }
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "message.fill")
+                        .imageScale(.large)
+                        .foregroundStyle(Color.white)
+                        .padding(10)
+                        .background {
+                            Circle()
+                                .fill(Color(uiColor: .systemGray3))
+                        }
+
+                }
+                .padding(.horizontal, 25)
+                .background {
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(Color(uiColor: .black))
+                        .frame(height: 60)
+                        .padding()
+                }
+                .padding(.top, 25)
+            })
+            .presentationBackground(Color.background)
+            .presentationDetents([.height(350)])
+            .presentationDragIndicator(.visible)
+            .presentationCornerRadius(CGFloat(20))
+            .ignoresSafeArea()
+        })
         .preferredColorScheme(.dark)
         .onAppear {
             withAnimation {
