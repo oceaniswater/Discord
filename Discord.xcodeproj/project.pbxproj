@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		862FECA72B2CB33500255395 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862FECA62B2CB33500255395 /* MessagesView.swift */; };
 		862FECA92B2CB35600255395 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862FECA82B2CB35600255395 /* NotificationsView.swift */; };
+		8634027E2B44343E009381E1 /* Simulator Screen Recording - iPhone 15 Pro - 2024-01-02 at 12.06.14.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8634027D2B44343E009381E1 /* Simulator Screen Recording - iPhone 15 Pro - 2024-01-02 at 12.06.14.gif */; };
 		86A0D6B42B2B533A00915B2E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0D6B32B2B533A00915B2E /* MenuView.swift */; };
 		86A0D6B62B2B58E400915B2E /* ChatRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */; };
 		86B0A6E52B29EF8B00A2D581 /* DiscordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B0A6E42B29EF8B00A2D581 /* DiscordApp.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		862FECA62B2CB33500255395 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		862FECA82B2CB35600255395 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		8634027D2B44343E009381E1 /* Simulator Screen Recording - iPhone 15 Pro - 2024-01-02 at 12.06.14.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Simulator Screen Recording - iPhone 15 Pro - 2024-01-02 at 12.06.14.gif"; sourceTree = "<group>"; };
 		86A0D6B32B2B533A00915B2E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		86A0D6B52B2B58E400915B2E /* ChatRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomView.swift; sourceTree = "<group>"; };
 		86B0A6E12B29EF8B00A2D581 /* Discord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Discord.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,9 +68,18 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		8634027C2B44341F009381E1 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				8634027D2B44343E009381E1 /* Simulator Screen Recording - iPhone 15 Pro - 2024-01-02 at 12.06.14.gif */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		86B0A6D82B29EF8B00A2D581 = {
 			isa = PBXGroup;
 			children = (
+				8634027C2B44341F009381E1 /* Media */,
 				86B0A6E32B29EF8B00A2D581 /* Discord */,
 				86B0A6E22B29EF8B00A2D581 /* Products */,
 			);
@@ -192,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8634027E2B44343E009381E1 /* Simulator Screen Recording - iPhone 15 Pro - 2024-01-02 at 12.06.14.gif in Resources */,
 				86B0A6EC2B29EF8C00A2D581 /* Preview Assets.xcassets in Resources */,
 				86B0A6E92B29EF8C00A2D581 /* Assets.xcassets in Resources */,
 			);
